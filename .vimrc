@@ -1,5 +1,6 @@
 set nocompatible
 set number
+set rnu
 set hlsearch
 set ignorecase
 syntax on
@@ -9,6 +10,8 @@ set nowritebackup
 set noswapfile
 set ts=4
 set expandtab
+set autoindent
+set smartindent
 set t_Co=256
 let g:netrw_liststyle=3
 
@@ -16,12 +19,17 @@ set runtimepath^=~/.vim/bundle/nerdtree
 set runtimepath^=~/.vim/bundle/vim-airline
 set runtimepath^=~/.vim/bundle/vim-airline-themes
 set runtimepath^=~/.vim/bundle/minibufexpl.vim
+set runtimepath^=~/.vim/bundle/tagbar
+
+"tagbar
+nmap <F8> :TagbarToggle<cr>
 
 "NERDtree
 nmap <F5> :NERDTreeToggle<cr>
-let NERDTreeWinPos="right"
+"let NERDTreeWinPos="right" "don't use this, or quickfix window opens under the Nerdtree window or Tagbar window.
+
 "quit vim when main edit buff closed
-autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), 'empty(getbufvar(winbufnr(v:val), "&bt"))')) | qa! | endif
+"autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), 'empty(getbufvar(winbufnr(v:val), "&bt"))')) | qa! | endif
 
 "MiniBufExplorer
 let g:miniBufExplMapCTabSwitchBufs = 1
@@ -41,3 +49,9 @@ set cscopequickfix=s-,c-,d-,i-,t-,e-
 
 "theme
 colorscheme monokai
+
+" This trigger takes advantage of the fact that the quickfix window can be
+" easily distinguished by its file-type, qf. The wincmd J command is
+" equivalent to the Ctrl+W, Shift+J shortcut telling Vim to move a window to
+" the very bottom (see :help :wincmd and :help ^WJ).
+autocmd FileType qf wincmd J
