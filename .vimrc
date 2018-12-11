@@ -9,17 +9,20 @@ set nobackup
 set nowritebackup
 set noswapfile
 set ts=4
+set sw=4
 set expandtab
 set autoindent
 set smartindent
 set t_Co=256
 let g:netrw_liststyle=3
+set previewheight=25
 
 set runtimepath^=~/.vim/bundle/nerdtree
 set runtimepath^=~/.vim/bundle/vim-airline
 set runtimepath^=~/.vim/bundle/vim-airline-themes
-set runtimepath^=~/.vim/bundle/minibufexpl.vim
+"set runtimepath^=~/.vim/bundle/minibufexpl.vim
 set runtimepath^=~/.vim/bundle/tagbar
+set runtimepath^=~/.vim/bundle/bufexplorer
 
 "tagbar
 nmap <F8> :TagbarToggle<cr>
@@ -32,16 +35,17 @@ nmap <F5> :NERDTreeToggle<cr>
 "autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), 'empty(getbufvar(winbufnr(v:val), "&bt"))')) | qa! | endif
 
 "MiniBufExplorer
-let g:miniBufExplMapCTabSwitchBufs = 1
-hi MBENormal               guifg=#808080 guibg=fg
-hi MBEChanged              guifg=#CD5907 guibg=fg
-hi MBEVisibleNormal        guifg=#5DC2D6 guibg=fg
-hi MBEVisibleChanged       guifg=#F1266F guibg=fg
-hi MBEVisibleActiveNormal  guifg=#A6DB29 guibg=fg
-hi MBEVisibleActiveChanged guifg=#F1266F guibg=fg
+"let g:miniBufExplMapCTabSwitchBufs = 1
+"hi MBENormal               guifg=#808080 guibg=fg
+"hi MBEChanged              guifg=#CD5907 guibg=fg
+"hi MBEVisibleNormal        guifg=#5DC2D6 guibg=fg
+"hi MBEVisibleChanged       guifg=#F1266F guibg=fg
+"hi MBEVisibleActiveNormal  guifg=#A6DB29 guibg=fg
+"hi MBEVisibleActiveChanged guifg=#F1266F guibg=fg
 
 "vim-airline
 let g:airline_theme='molokai'
+let g:airline#extensions#whitespace#enabled=0
 
 " powerline symbols
 if has("unix")
